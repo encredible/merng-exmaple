@@ -14,14 +14,12 @@ module.exports = {
       }
 
       const post = await Post.findById(postId);
-      console.log('a');
       if (post) {
         post.comments.unshift({
           body,
           username,
           createdAt: new Date().toISOString()
         })
-        console.log('b');
         await post.save();
         return post;
       } else {
